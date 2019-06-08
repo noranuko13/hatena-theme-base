@@ -26,6 +26,13 @@ $ npm run watch
 > node-sass src/style.scss public/style.css --watch --output-style expanded
 ```
 
+### Web Server for Chrome
+- Server
+  - [Web Server for Chrome - Chrome ウェブストア](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb)
+
+- Choose Folder: hatena-theme-base/public, Enter Port: 3000
+  - [http://127.0.0.1:3000/style.css](http://127.0.0.1:3000/style.css)
+
 
 ## ライセンス
 
