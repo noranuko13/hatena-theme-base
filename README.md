@@ -33,6 +33,13 @@ $ npm run watch
 - Choose Folder: hatena-theme-base/public, Enter Port: 3000
   - [http://127.0.0.1:3000/style.css](http://127.0.0.1:3000/style.css)
 
+### はてなブログ
+- デザイン > {}デザインCSS
+
+```
+@import url("http://127.0.0.1:3000/style.css");
+```
+
 
 ## ライセンス
 
