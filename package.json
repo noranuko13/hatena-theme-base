@@ -1,5 +1,8 @@
 {
   "private": true,
   "name": "hatena-theme-lifestyles",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^4.12.0"
+  }
 }
