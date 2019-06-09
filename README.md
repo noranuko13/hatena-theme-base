@@ -44,3 +44,6 @@ $ npm run watch
 ## ライセンス
 
 - MIT License
+
+### Libraries
+- [HTML5 Reset Stylesheet _ HTML5 Doctor](http://html5doctor.com/html-5-reset-stylesheet/)
