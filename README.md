@@ -41,6 +41,16 @@ $ npm run watch
 ```
 
 
+## デプロイ
+
+### CircleCI
+| 環境変数          | 内容                           |
+| ----------------- | ------------------------------ |
+| HATENA_NAME       | はてなID または メールアドレス |
+| HATENA_PASSWORD   | パスワード                     |
+| HATENA_THEME_UUID | はてなテーマUUID               |
+
+
 ## ライセンス
 
 - MIT License
