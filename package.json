@@ -7,6 +7,7 @@
     "prod": "node-sass src/style.scss public/style.min.css --output-style compressed"
   },
   "dependencies": {
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.12.0",
+    "request": "^2.88.0"
   }
 }
