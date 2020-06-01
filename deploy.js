@@ -69,6 +69,7 @@ Promise.resolve()
       }
     }));
   })
+  .catch(error => console.error('resolve: ' + error))
 ;
 
 
