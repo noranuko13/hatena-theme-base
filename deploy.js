@@ -33,7 +33,7 @@ Promise.resolve()
     // テーマストア編集画面を表示する
     return requestPromise(initOptions({
       method: 'GET',
-      url: 'http://blog.hatena.ne.jp/-/store/theme/' + themeUuid + '/edit',
+      url: 'https://blog.hatena.ne.jp/-/store/theme/' + themeUuid + '/edit',
       jar: jar,
       transform: function (body) {
         return cheerio.load(body);
@@ -47,7 +47,7 @@ Promise.resolve()
     // テーマを更新する
     return requestPromise(initOptions({
       method: 'POST',
-      url: 'http://blog.hatena.ne.jp/-/store/theme/' + themeUuid,
+      url: 'https://blog.hatena.ne.jp/-/store/theme/' + themeUuid,
       jar: jar,
       headers: {
         'content-type': 'multipart/form-data'
