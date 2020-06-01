@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "hatena-theme-lifestyles",
+  "name": "hatena-theme-base",
   "license": "MIT",
   "scripts": {
     "watch": "node-sass src/style.scss public/style.css --watch --output-style expanded",
