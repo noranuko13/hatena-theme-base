@@ -4,74 +4,56 @@ const name = getEnv('HATENA_NAME');
 const password = getEnv('HATENA_PASSWORD');
 const themeUuid = getEnv('HATENA_THEME_UUID');
 
+const puppeteer = require('puppeteer');
 const fs = require('fs');
-const cheerio = require('cheerio');
-const requestPromise = require('request-promise');
-const jar = requestPromise.jar();
 
+const themeName = getFileContent('./resources/theme-name.hatena');
+const themeDescription = getFileContent('./resources/description.hatena');
+const themeCss = getFileContent('./public/style.min.css');
 
-Promise.resolve()
-  .then(function(){
-    // はてなブログにログインする
-    return requestPromise(initOptions({
-      method: 'POST',
-      url: 'https://www.hatena.ne.jp/login',
-      jar: jar,
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded',
-      },
-      form: {
-        'name': name,
-        'password': password,
-      },
-      transform: function () {
-        return jar;
-      }
-    }));
-  })
-  .then(function(jar){
-    // テーマストア編集画面を表示する
-    return requestPromise(initOptions({
-      method: 'GET',
-      url: 'https://blog.hatena.ne.jp/-/store/theme/' + themeUuid + '/edit',
-      jar: jar,
-      transform: function (body) {
-        return cheerio.load(body);
-      },
-    }));
-  })
-  .then(function($) {
-    const rkm = $('#form-update-theme input[name="rkm"]').val();
-    const rkc = $('#form-update-theme input[name="rkc"]').val();
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
 
-    // テーマを更新する
-    return requestPromise(initOptions({
-      method: 'POST',
-      url: 'https://blog.hatena.ne.jp/-/store/theme/' + themeUuid,
-      jar: jar,
-      headers: {
-        'content-type': 'multipart/form-data'
-      },
-      formData: {
-        'name': getFileContent('./resources/theme-name.hatena'),
-        'description': getFileContent('./resources/description.hatena'),
-        'css': getFileContent('./public/style.min.css'),
-        'screenshot': {
-          value: fs.createReadStream('./resources/screenshot.png'),
-          options: {
-            filename: 'image.png',
-            contentType: 'image/png'
-          }
-        },
-        'accept_tos': 1,
-        'rkm': rkm,
-        'rkc': rkc
-      }
-    }));
-  })
-  .catch(error => console.error('resolve: ' + error))
-;
+  // はてなブログのログインページを表示する
+  await page.goto('https://www.hatena.ne.jp/login');
 
+  // はてなブログにログインする
+  const loginForm = await page.$('form[action="/login"]');
+  await page.type('input[name="name"]', name);
+  await page.type('input[name="password"]', password);
+  await Promise.all([
+    page.waitForNavigation(),
+    loginForm.evaluate(form => form.submit()),
+  ]);
+  await page.waitForTimeout(5000);
+
+  // テーマストア編集画面を表示する
+  await page.goto('https://blog.hatena.ne.jp/-/store/theme/' + themeUuid + '/edit');
+
+  // テーマを更新する
+  const themeForm = await page.$('#form-update-theme');
+  const update = async (selector, content) => {
+    await page.$eval(selector, (e) => e.value = '');
+    await page.$eval(selector, (e, content) => e.value = content, content);
+  }
+  await update('input[name=name]', themeName);
+  await update('textarea[name=description]', themeDescription);
+  await update('textarea[name=css]', themeCss);
+  const [fileChooser] = await Promise.all([
+    page.waitForFileChooser(),
+    page.click('#theme-screenshot'),
+  ]);
+  await fileChooser.accept(['./resources/screenshot.png']);
+  await page.$eval('input[name="accept_tos"]', check => check.checked = true);
+  await Promise.all([
+    page.waitForNavigation(),
+    themeForm.evaluate(form => form.submit()),
+  ]);
+
+  // ブラウザを閉じる
+  await browser.close();
+})();
 
 /**
  * 環境変数の取得
@@ -92,16 +74,4 @@ function getEnv(envValue) {
  */
 function getFileContent(path) {
   return fs.readFileSync(path, { encoding: 'utf-8' })
-}
-
-/**
- * オプションの初期化
- * @param options
- * @returns {*}
- */
-function initOptions(options) {
-  options.followAllRedirects = true;
-  options.timeout = 30 * 1000;
-
-  return options;
 }
