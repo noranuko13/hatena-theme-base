@@ -7,10 +7,7 @@
     "prod": "node-sass src/style.scss public/style.min.css --output-style compressed"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
     "node-sass": "^4.14.1",
-    "puppeteer": "^8.0.0",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "puppeteer": "^8.0.0"
   }
 }
