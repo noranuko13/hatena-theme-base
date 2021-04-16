@@ -1,17 +1,17 @@
 'use strict';
 
 const Env = require('./core/env').Env
+const Utils = require('./core/utils').Utils
 
 const puppeteer = require('puppeteer');
-const fs = require('fs');
 
-const themeName = getFileContent('./resources/theme-name.hatena');
+const themeName = Utils.getFileContent('./resources/theme-name.hatena');
 const revision = require('child_process')
   .execSync('git rev-parse --short HEAD')
   .toString().trim();
-const themeDescription = getFileContent('./resources/description.hatena')
+const themeDescription = Utils.getFileContent('./resources/description.hatena')
   .replace(':REVISION:', revision);
-const themeCss = getFileContent('./public/style.min.css');
+const themeCss = Utils.getFileContent('./public/style.min.css');
 
 (async () => {
   let browser;
@@ -61,12 +61,3 @@ const themeCss = getFileContent('./public/style.min.css');
   // ブラウザを閉じる
   await browser.close();
 })();
-
-/**
- * ファイル内容の取得
- * @param path
- * @returns {string}
- */
-function getFileContent(path) {
-  return fs.readFileSync(path, { encoding: 'utf-8' })
-}
