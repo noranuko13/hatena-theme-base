@@ -19,4 +19,4 @@ jobs:
           command: npm run prod
       - run:
           name: Deploy
-          command: node deploy.js
+          command: node scripts/deploy.js
