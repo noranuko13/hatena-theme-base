@@ -8,7 +8,11 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 const themeName = getFileContent('./resources/theme-name.hatena');
-const themeDescription = getFileContent('./resources/description.hatena');
+const revision = require('child_process')
+  .execSync('git rev-parse --short HEAD')
+  .toString().trim();
+const themeDescription = getFileContent('./resources/description.hatena')
+  .replace(':REVISION:', revision);
 const themeCss = getFileContent('./public/style.min.css');
 
 (async () => {
