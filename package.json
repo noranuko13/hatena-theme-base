@@ -7,6 +7,7 @@
     "prod": "node-sass src/style.scss public/style.min.css --output-style compressed"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "node-sass": "^4.14.1",
     "puppeteer": "^8.0.0"
   },
