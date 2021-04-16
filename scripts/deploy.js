@@ -1,10 +1,6 @@
 'use strict';
 
-require('dotenv').config()
-const name = process.env.HATENA_NAME;
-const password = process.env.HATENA_PASSWORD;
-const themeUuid = process.env.HATENA_THEME_UUID;
-const htbEnv = process.env.HTB_ENV;
+const Env = require('./core/env').Env
 
 const puppeteer = require('puppeteer');
 const fs = require('fs');
@@ -19,7 +15,7 @@ const themeCss = getFileContent('./public/style.min.css');
 
 (async () => {
   let browser;
-  if (htbEnv === 'ci') {
+  if (Env.htbEnv === 'ci') {
     browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
   } else {
     browser = await puppeteer.launch({ headless: false });
@@ -31,8 +27,8 @@ const themeCss = getFileContent('./public/style.min.css');
 
   // はてなブログにログインする
   const loginForm = await page.$('form[action="/login"]');
-  await page.type('input[name="name"]', name);
-  await page.type('input[name="password"]', password);
+  await page.type('input[name="name"]', Env.name);
+  await page.type('input[name="password"]', Env.password);
   await Promise.all([
     page.waitForNavigation(),
     loginForm.evaluate(form => form.submit()),
@@ -40,7 +36,7 @@ const themeCss = getFileContent('./public/style.min.css');
   await page.waitForTimeout(5000);
 
   // テーマストア編集画面を表示する
-  await page.goto('https://blog.hatena.ne.jp/-/store/theme/' + themeUuid + '/edit');
+  await page.goto('https://blog.hatena.ne.jp/-/store/theme/' + Env.themeUuid + '/edit');
 
   // テーマを更新する
   const themeForm = await page.$('#form-update-theme');
