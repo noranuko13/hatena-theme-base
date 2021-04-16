@@ -40,6 +40,7 @@ $ npm run watch
 | HATENA_NAME       | はてなID または メールアドレス |
 | HATENA_PASSWORD   | パスワード                     |
 | HATENA_THEME_UUID | はてなテーマUUID               |
+| HTB_ENV           | ci                             |
 
 
 ## ライセンス
