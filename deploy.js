@@ -1,8 +1,9 @@
 'use strict';
 
-const name = getEnv('HATENA_NAME');
-const password = getEnv('HATENA_PASSWORD');
-const themeUuid = getEnv('HATENA_THEME_UUID');
+require('dotenv').config()
+const name = process.env.HATENA_NAME;
+const password = process.env.HATENA_PASSWORD;
+const themeUuid = process.env.HATENA_THEME_UUID;
 
 const puppeteer = require('puppeteer');
 const fs = require('fs');
@@ -58,18 +59,6 @@ const themeCss = getFileContent('./public/style.min.css');
   // ブラウザを閉じる
   await browser.close();
 })();
-
-/**
- * 環境変数の取得
- * @param envValue
- * @returns {string}
- */
-function getEnv(envValue) {
-  if (process.env[envValue] === undefined) {
-    throw new Error(`${envValue} is undefined`);
-  }
-  return process.env[envValue];
-}
 
 /**
  * ファイル内容の取得
