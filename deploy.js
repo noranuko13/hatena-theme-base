@@ -4,6 +4,7 @@ require('dotenv').config()
 const name = process.env.HATENA_NAME;
 const password = process.env.HATENA_PASSWORD;
 const themeUuid = process.env.HATENA_THEME_UUID;
+const htbEnv = process.env.HTB_ENV;
 
 const puppeteer = require('puppeteer');
 const fs = require('fs');
@@ -17,7 +18,12 @@ const themeDescription = getFileContent('./resources/description.hatena')
 const themeCss = getFileContent('./public/style.min.css');
 
 (async () => {
-  const browser = await puppeteer.launch();
+  let browser;
+  if (htbEnv === 'ci') {
+    browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+  } else {
+    browser = await puppeteer.launch({ headless: false });
+  }
   const page = await browser.newPage();
 
   // はてなブログのログインページを表示する
