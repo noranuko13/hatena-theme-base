@@ -12,7 +12,9 @@
     "sass": "^1.32.9"
   },
   "devDependencies": {
-    "eslint": "^7.24.0"
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
   },
   "engines": {
     "node": "14.16.0",
