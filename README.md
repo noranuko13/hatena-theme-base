@@ -9,13 +9,7 @@
 ## 開発
 Install [Node.js](https://nodejs.org/ja/).
 
-### node-sass
-- [sass/node-sass](https://github.com/sass/node-sass)
-
-```
-$ npm run watch
-> node-sass src/style.scss public/style.css --watch --output-style expanded
-```
+Then, ```npm run watch```.
 
 ### Web Server for Chrome
 - Server
