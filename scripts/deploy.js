@@ -1,17 +1,9 @@
 'use strict';
 
 const Env = require('./core/env').Env
-const Utils = require('./core/utils').Utils
+const Theme = require('./core/theme').Theme
 
 const puppeteer = require('puppeteer');
-
-const themeName = Utils.getFileContent('./resources/theme-name.hatena');
-const revision = require('child_process')
-  .execSync('git rev-parse --short HEAD')
-  .toString().trim();
-const themeDescription = Utils.getFileContent('./resources/description.hatena')
-  .replace(':REVISION:', revision);
-const themeCss = Utils.getFileContent('./public/style.min.css');
 
 (async () => {
   let browser;
@@ -44,14 +36,14 @@ const themeCss = Utils.getFileContent('./public/style.min.css');
     await page.$eval(selector, (e) => e.value = '');
     await page.$eval(selector, (e, content) => e.value = content, content);
   }
-  await update('input[name=name]', themeName);
-  await update('textarea[name=description]', themeDescription);
-  await update('textarea[name=css]', themeCss);
+  await update('input[name=name]', Theme.name);
+  await update('textarea[name=description]', Theme.description);
+  await update('textarea[name=css]', Theme.css);
   const [fileChooser] = await Promise.all([
     page.waitForFileChooser(),
     page.click('#theme-screenshot'),
   ]);
-  await fileChooser.accept(['./resources/screenshot.png']);
+  await fileChooser.accept([Theme.screenshot]);
   await page.$eval('input[name="accept_tos"]', check => check.checked = true);
   await Promise.all([
     page.waitForNavigation(),
