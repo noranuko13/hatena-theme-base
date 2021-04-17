@@ -3,7 +3,8 @@
   "name": "hatena-theme-base",
   "license": "MIT",
   "scripts": {
-    "watch": "sass src/style.scss public/style.css --watch --style expanded",
+    "dev:watch": "sass src/style.scss public/style.css --watch --style expanded",
+    "dev:server": "node scripts/server.js",
     "prod": "sass src/style.scss public/style.min.css --style compressed --no-source-map"
   },
   "dependencies": {

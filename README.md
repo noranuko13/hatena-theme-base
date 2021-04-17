@@ -9,14 +9,10 @@
 ## 開発
 Install [Node.js](https://nodejs.org/ja/).
 
-Then, ```npm run watch```.
+Then, ```npm run dev:watch``` and ```npm run dev:server```.
 
-### Web Server for Chrome
-- Server
-  - [Web Server for Chrome - Chrome ウェブストア](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb)
-
-- Choose Folder: hatena-theme-base/public, Enter Port: 3000
-  - [http://127.0.0.1:3000/style.css](http://127.0.0.1:3000/style.css)
+- [style.css](http://127.0.0.1:3000/style.css)
+  - [style.css.map](http://127.0.0.1:3000/style.css.map)
 
 ### はてなブログ
 - デザイン > {}デザインCSS
@@ -35,6 +31,13 @@ Then, ```npm run watch```.
 | HATENA_PASSWORD   | パスワード                     |
 | HATENA_THEME_UUID | はてなテーマUUID               |
 | HTB_ENV           | ci                             |
+
+
+## 改造
+```shell
+# scripts配下のESLintによるコード分析
+$ npx eslint scripts
+```
 
 
 ## ライセンス
