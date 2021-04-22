@@ -33,13 +33,6 @@ Then, ```npm run dev:watch``` and ```npm run dev:server```.
 | HTB_ENV           | ci                             |
 
 
-## 改造
-```shell
-# scripts配下のESLintによるコード分析
-$ npx eslint scripts
-```
-
-
 ## ライセンス
 
 - MIT License
