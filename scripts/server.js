@@ -1,6 +1,7 @@
 const fs = require('fs');
 const http = require('http');
 const path = require('path');
+const { Logger } = require('./core/logger');
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -18,6 +19,7 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, hostname, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Server running at http://${hostname}:${port}/`);
+  Logger.info('開発サーバーを起動しました', [
+    `http://${hostname}:${port}/`,
+  ]);
 });

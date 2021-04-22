@@ -3,6 +3,10 @@ class Logger {
     Logger.log('33', `[注意] ${title}`, messages);
   }
 
+  static info(title, messages) {
+    Logger.log('34', `[情報] ${title}`, messages);
+  }
+
   static log(color, title, messages) {
     /* eslint-disable no-console */
     console.log(`\x1b[${color}m${title}\x1b[0m`);
