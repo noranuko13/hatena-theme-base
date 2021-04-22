@@ -30,6 +30,7 @@ class Logger {
     messages.forEach((message) => {
       console.log(`・${message}`);
     });
+    console.groupEnd();
     /* eslint-enable no-console */
   }
 }
