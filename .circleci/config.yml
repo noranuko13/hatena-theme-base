@@ -16,7 +16,7 @@ jobs:
             - ./node_modules
       - run:
           name: Build
-          command: npm run prod
+          command: npm run prod:build
       - run:
           name: Deploy
           command: node scripts/deploy.js
