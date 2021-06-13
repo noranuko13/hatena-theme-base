@@ -1,4 +1,5 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 const { Env } = require('./env');
 
 /**
@@ -6,6 +7,7 @@ const { Env } = require('./env');
  */
 class Kugutsushi {
   async start() {
+    puppeteer.use(StealthPlugin());
     const options = Env.htbEnv === 'ci'
       ? { args: ['--no-sandbox', '--disable-setuid-sandbox'] }
       : { headless: false };
