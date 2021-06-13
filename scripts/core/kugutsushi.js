@@ -42,6 +42,10 @@ class Kugutsushi {
     ]);
   }
 
+  async click(selector) {
+    await this.page.click(selector);
+  }
+
   async wait(milliseconds = 5000) {
     await this.page.waitForTimeout(milliseconds);
   }
