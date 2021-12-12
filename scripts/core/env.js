@@ -51,8 +51,10 @@ class Env {
   static get(name, descriptions) {
     const value = process.env[name];
     if (value === undefined || value === '') {
-      Logger.warn(`${name}が定義されていません`,
-        ['.envファイルに記述するか、環境変数として設定して下さい。'].concat(descriptions));
+      Logger.warn(
+        `${name}が定義されていません`,
+        ['.envファイルに記述するか、環境変数として設定して下さい。'].concat(descriptions),
+      );
       process.exit(1);
     }
     return value;
