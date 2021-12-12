@@ -15,6 +15,9 @@ jobs:
           paths:
             - ./node_modules
       - run:
+          name: Statically analyzes
+          command: npm run mod:eslint
+      - run:
           name: Build
           command: npm run prod:build
       - run:
