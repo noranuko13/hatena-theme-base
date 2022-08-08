@@ -1,9 +1,15 @@
-version: 2
+version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.4.0
 jobs:
   build:
     docker:
-      - image: circleci/node:latest-browsers
+      - image: cimg/node:16.16.0-browsers
     steps:
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - run:
+          command: sudo npm install -g npm@8.11.0
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
