@@ -39,6 +39,7 @@ nav ul {
 blockquote, q {
   quotes: none;
 
+  //noinspection CssOverwrittenProperties
   &:before, &:after {
     content: '';
     content: none;
