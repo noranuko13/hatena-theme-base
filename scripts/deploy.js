@@ -14,7 +14,7 @@ const { Kugutsushi } = require('./core/kugutsushi');
   await kugutsushi.replaceFormText('input[name="name"]', Env.name);
   await kugutsushi.replaceFormText('input[name="password"]', Env.password);
   await kugutsushi.click('#login-button');
-  await kugutsushi.wait();
+  await new Promise((r) => { setTimeout(r, 5000); });
 
   Logger.info('テーマストア編集画面でテーマを更新します');
   await kugutsushi.show(`https://blog.hatena.ne.jp/-/store/theme/${Env.themeUuid}/edit`);
