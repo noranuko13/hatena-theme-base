@@ -51,6 +51,10 @@ class Kugutsushi {
     await this.page.click(selector);
   }
 
+  async wait(milliseconds = 5000) {
+    await this.page.waitForTimeout(milliseconds);
+  }
+
   async stop() {
     await this.browser.close();
 
