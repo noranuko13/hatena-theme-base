@@ -11,7 +11,10 @@ class Kugutsushi {
     const options = Env.htbEnv === 'ci'
       ? { args: ['--no-sandbox', '--disable-setuid-sandbox'] }
       : { headless: false };
-    this.browser = await puppeteer.launch(options);
+    this.browser = await puppeteer.launch({
+      channel: 'chrome',
+      ...options,
+    });
     this.page = await this.browser.newPage();
   }
 
