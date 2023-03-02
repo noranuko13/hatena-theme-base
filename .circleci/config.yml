@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: cimg/node:16.18.0-browsers
+      - image: cimg/node:18.14.2-browsers
     steps:
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
