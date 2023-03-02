@@ -10,15 +10,15 @@
   },
   "dependencies": {
     "dotenv": "^16.0.3",
-    "puppeteer": "^16.1.0",
-    "puppeteer-extra": "^3.3.4",
-    "puppeteer-extra-plugin-stealth": "^2.11.1",
-    "sass": "^1.55.0"
+    "puppeteer": "^19.7.2",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "sass": "^1.58.3"
   },
   "devDependencies": {
-    "eslint": "^8.25.0",
+    "eslint": "^8.35.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint-plugin-import": "^2.27.5"
   },
   "engines": {
     "node": "18.14.2",
