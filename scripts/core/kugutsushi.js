@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
-const { Env } = require('./env');
 const { executablePath } = require('puppeteer');
+const { Env } = require('./env');
 
 /**
  * 傀儡師
