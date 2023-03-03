@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 const { Env } = require('./env');
+const { executablePath } = require('puppeteer');
 
 /**
  * 傀儡師
@@ -13,6 +14,7 @@ class Kugutsushi {
       : { headless: false };
     this.browser = await puppeteer.launch({
       channel: 'chrome',
+      executablePath: executablePath(),
       ...options,
     });
     this.page = await this.browser.newPage();
