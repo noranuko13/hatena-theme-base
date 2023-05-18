@@ -10,10 +10,9 @@ class Kugutsushi {
   async start() {
     puppeteer.use(StealthPlugin());
     const options = Env.htbEnv === 'ci'
-      ? { args: ['--no-sandbox', '--disable-setuid-sandbox'] }
+      ? { headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] }
       : { headless: false };
     this.browser = await puppeteer.launch({
-      headless: 'new',
       channel: 'chrome',
       executablePath: executablePath(),
       ...options,
