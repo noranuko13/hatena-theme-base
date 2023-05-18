@@ -1,4 +1,5 @@
 const { Utils } = require('./utils');
+const { Env } = require('./env');
 
 /**
  * テーマ
@@ -15,8 +16,9 @@ class Theme {
    * @returns {string} テーマの説明
    */
   static get description() {
+    const revision = Env.htbEnv === 'dev' ? Date.now() : Utils.getRevision();
     return Utils.getFileContent('./resources/description.hatena')
-      .replace(':REVISION:', Utils.getRevision());
+      .replace(':REVISION:', revision);
   }
 
   /**
