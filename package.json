@@ -9,16 +9,16 @@
     "mod:eslint": "eslint scripts"
   },
   "dependencies": {
-    "dotenv": "^16.0.3",
-    "puppeteer": "^20.2.0",
+    "dotenv": "^16.4.5",
+    "puppeteer": "^22.2.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
-    "sass": "^1.62.1"
+    "sass": "^1.71.1"
   },
   "devDependencies": {
-    "eslint": "^8.40.0",
+    "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5"
+    "eslint-plugin-import": "^2.29.1"
   },
   "engines": {
     "node": "20.11.0",
