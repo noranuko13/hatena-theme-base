@@ -19,6 +19,10 @@ class Utils {
   static getRevision() {
     return execSync('git rev-parse --short HEAD').toString().trim();
   }
+
+  static async wait(milliseconds = 5000) {
+    await new Promise((resolve) => { setTimeout(resolve, milliseconds); });
+  }
 }
 
 exports.Utils = Utils;

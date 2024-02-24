@@ -2,6 +2,7 @@ const { Logger } = require('./core/logger');
 const { Env } = require('./core/env');
 const { Theme } = require('./core/theme');
 const { Kugutsushi } = require('./core/kugutsushi');
+const { Utils } = require('./core/utils');
 
 (async () => {
   const kugutsushi = new Kugutsushi();
@@ -14,7 +15,7 @@ const { Kugutsushi } = require('./core/kugutsushi');
   await kugutsushi.replaceFormText('input[name="name"]', Env.name);
   await kugutsushi.replaceFormText('input[name="password"]', Env.password);
   await kugutsushi.click('#login-button');
-  await kugutsushi.wait(8000);
+  await Utils.wait(8000);
 
   Logger.info('テーマストア編集画面でテーマを更新します');
   await kugutsushi.show(`https://blog.hatena.ne.jp/-/store/theme/${Env.themeUuid}/edit`);
