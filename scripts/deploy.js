@@ -11,7 +11,7 @@ const { Utils } = require('./core/utils');
   await kugutsushi.start();
 
   Logger.info('はてなにログインします');
-  await kugutsushi.show('https://www.hatena.ne.jp/login');
+  await kugutsushi.show('https://accounts.hatena.ne.jp/login');
   await kugutsushi.type('input[name="username"]', Env.name);
   await kugutsushi.type('input[name="password"]', Env.password);
   await kugutsushi.click('form[action="/login"] button[type="submit"]');
