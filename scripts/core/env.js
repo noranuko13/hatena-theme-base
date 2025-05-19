@@ -38,8 +38,7 @@ class Env {
    */
   static get htbEnv() {
     return Env.get('HTB_ENV', [
-      'CircleCIには『ci』を設定します。',
-      '開発環境で『dev』を指定すると、ブラウザを起動しながら動作確認できます。',
+      '『dev』を指定すると、ブラウザを表示しながら動作確認できます。',
     ]);
   }
 
