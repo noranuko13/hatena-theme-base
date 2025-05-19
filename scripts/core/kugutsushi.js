@@ -21,7 +21,7 @@ class Kugutsushi {
   }
 
   async show(url) {
-    await this.page.goto(url);
+    await this.page.goto(url, { waitUntil: 'networkidle2' });
   }
 
   async type(selector, text) {
