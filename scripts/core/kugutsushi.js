@@ -25,11 +25,13 @@ class Kugutsushi {
   }
 
   async type(selector, text) {
+    await this.page.waitForSelector(selector, { visible: true });
     await this.page.$eval(selector, (e) => { e.value = ''; });
     await this.page.type(selector, text);
   }
 
   async replaceFormText(selector, text) {
+    await this.page.waitForSelector(selector, { visible: true });
     await this.page.$eval(selector, (e) => { e.value = ''; });
     await this.page.$eval(selector, (e, c) => { e.value = c; }, text);
   }
