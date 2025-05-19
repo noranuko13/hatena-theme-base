@@ -1,3 +1,4 @@
+const dayjs = require('dayjs');
 const { Utils } = require('./utils');
 const { Env } = require('./env');
 
@@ -16,7 +17,7 @@ class Theme {
    * @returns {string} テーマの説明
    */
   static get description() {
-    const revision = Env.htbEnv === 'dev' ? Date.now() : Utils.getRevision();
+    const revision = Env.htbEnv === 'dev' ? dayjs().format('YYYY-MM-DD HH:mm:ss') : Utils.getRevision();
     return Utils.getFileContent('./resources/description.hatena')
       .replace(':REVISION:', revision);
   }
