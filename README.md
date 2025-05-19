@@ -5,10 +5,7 @@
 > We currently have no plans to migrate to another CI tool. Please deploy manually from your local environment as needed.
 > This is due to the frequent occurrence of deployment failures on CircleCI, despite working well in local environments.
 
-
-## Overview
-
-- Automatic update of Hatena Blog theme store
+Automatic update of Hatena Blog theme store
 
 
 ## Development
