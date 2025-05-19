@@ -6,12 +6,12 @@
 > This is due to the frequent occurrence of deployment failures on CircleCI, despite working well in local environments.
 
 
-## 概要
+## Overview
 
-- はてなブログの自作デザインテーマのベース
+- Automatic update of Hatena Blog theme store
 
 
-## 開発
+## Development
 
 Install [Node.js](https://nodejs.org/ja/).
 
@@ -20,7 +20,7 @@ Then, ```npm run dev:watch``` and ```npm run dev:server```.
 - [style.css](http://127.0.0.1:3000/style.css)
   - [style.css.map](http://127.0.0.1:3000/style.css.map)
 
-### はてなブログ
+### Hatena Blog
 
 - デザイン > {}デザインCSS
 
@@ -29,7 +29,7 @@ Then, ```npm run dev:watch``` and ```npm run dev:server```.
 ```
 
 
-## デプロイ
+## Deploy
 
 ### CircleCI
 
@@ -41,7 +41,7 @@ Then, ```npm run dev:watch``` and ```npm run dev:server```.
 | HTB_ENV | ci |
 
 
-## ライセンス
+## License
 
 - MIT License
 
