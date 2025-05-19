@@ -8,34 +8,56 @@
 Automatic update of Hatena Blog theme store
 
 
-## Development
+## Setup
 
 Install [Node.js](https://nodejs.org/ja/).
 
-Then, ```npm run dev:watch``` and ```npm run dev:server```.
-
-- [style.css](http://127.0.0.1:3000/style.css)
-  - [style.css.map](http://127.0.0.1:3000/style.css.map)
-
-### Hatena Blog
-
-- デザイン > {}デザインCSS
-
+```shell
+$ npm install
 ```
+
+
+## Development
+
+```shell
+# Console A: Watch SCSS and Rebuild CSS
+$ npm run dev:watch
+```
+
+```shell
+# Console B: Start the server
+$ npm run dev:server
+```
+
+- はてなブログ 管理画面
+  - デザイン > カスタマイズ > 高度な設定 {}デザインCSS
+
+```css
 @import url("http://127.0.0.1:3000/style.css");
 ```
 
 
 ## Deploy
 
-### CircleCI
+Set up environment variables,
+
+```shell
+$ cp .env.example .env
+```
 
 | 環境変数 | 内容 |
-| ----------------- | ------------------------------ |
+| --- | --- |
 | HATENA_NAME | はてなID または メールアドレス |
 | HATENA_PASSWORD | パスワード |
 | HATENA_THEME_UUID | はてなテーマUUID |
 | HTB_ENV | ci |
+
+Then,
+
+```shell
+$ npm run prod:build
+$ node scripts/deploy.js
+```
 
 
 ## License
