@@ -21,7 +21,7 @@
     "eslint-plugin-import": "^2.25.2"
   },
   "engines": {
-    "node": "v22.14.0",
-    "npm": "10.9.2"
+    "node": "v22.15.1",
+    "npm": "11.3.0"
   }
 }
