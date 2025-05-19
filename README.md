@@ -50,7 +50,7 @@ $ cp .env.example .env
 | HATENA_NAME | はてなID または メールアドレス |
 | HATENA_PASSWORD | パスワード |
 | HATENA_THEME_UUID | はてなテーマUUID |
-| HTB_ENV | ci |
+| HTB_ENV | dev |
 
 Then,
 
