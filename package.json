@@ -5,6 +5,8 @@
   "scripts": {
     "dev:watch": "sass src/style.scss public/style.css --watch --style expanded",
     "dev:server": "node scripts/server.js",
+    "style:fix": "prettier --write src && stylelint src/*.scss --fix",
+    "style:ci": "prettier --check src && stylelint src/*.scss",
     "prod:build": "sass src/style.scss public/style.min.css --style compressed --no-source-map",
     "mod:eslint": "eslint scripts"
   },

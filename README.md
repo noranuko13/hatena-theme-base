@@ -37,6 +37,19 @@ $ npm run dev:server
 ```
 
 
+## Formatter
+
+```shell
+# Auto-fix
+$ npm run style:fix
+```
+
+```shell
+# Check only
+$ npm run style:ci
+```
+
+
 ## Deploy
 
 Set up environment variables,
