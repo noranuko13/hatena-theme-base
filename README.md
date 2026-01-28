@@ -1,5 +1,8 @@
 # Hatena Theme Base
 
+> [!WARNING]
+> This repository is archived. No further updates will be made.
+
 > [!IMPORTANT]
 > CircleCI deploy support has ended.  
 > We currently have no plans to migrate to another CI tool. Please deploy manually from your local environment as needed.
